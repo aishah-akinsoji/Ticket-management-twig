@@ -1,0 +1,218 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+.logo{
+    width: 200px;
+}
+.logo img{
+    width: 100%;
+}
+.coloured-btn{
+    border: none;
+    background-color: #016094;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 8px;
+}
+.navbar{
+    background-color: rgb(216, 216, 253);
+}
+.landing-page{
+    background-color: rgba(249, 250, 251, 1);
+}
+.hero{
+    min-height: 70vh;
+    background-color: #016094;
+    background-image: url(wavebg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.circle-lg, .circle-md, .circle-sm, .circle-xs{
+    background-color: rgb(27, 112, 159);
+    border-radius: 100%;
+}
+.icon{
+    background-color: rgba(27, 113, 159, 0.267);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #016094;
+    font-size: 1.5rem;
+}
+.circle-lg{
+    height: 150px;
+    width: 150px;
+    left: 7%;
+    top: 8%
+}
+.circle-md{
+    height: 100px;
+    width: 100px;
+    right: 20%;
+    top: 10%;
+}
+.circle-sm{
+    height: 50px;
+    width: 50px;
+    right: 50%;
+    top: 5%;
+}
+.circle-xs{
+    height: 25px;
+    width: 25px;
+    left: 0;
+    top: 5%;
+}
+.description{
+    z-index: 1;
+    height: 100%
+}
+.transparent-btn{
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 8px;
+}
+.btn{
+    border: 1px solid white !important;
+    background-color: white !important;
+    color: #016094 !important;
+    padding: 6px 16px !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+}
+.features{
+    min-height: 100vh;
+}
+.password-rule{
+    font-size: 14px;
+    color: #585858;
+}
+.card{
+    max-width: 250px !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden;
+}
+.card-hover:hover{
+    transform: translateY(-10px);
+    box-shadow: var(0 30px 60px rgba(0,0,0,0.2));
+}
+.stat-value{
+    color: #016094;
+}
+.call-to-action{
+    background-color: #016094;
+}
+footer{
+    background-color: #011620;
+}
+.back{
+    background-color: transparent;
+    align-self: flex-start;
+}
+.auth-page{
+    background-color: #f5f8fa;
+    min-height: 100vh;
+}
+.login-card{
+    max-width: 400px !important;
+    width: 100%;
+}
+input, textarea, select{
+    background-color: rgba(27, 113, 159, 0.267);
+    border: none;
+    padding: 0.4rem;
+    border-radius: 5px;
+    color: #016094;
+}
+input::placeholder, textarea::placeholder{
+    color: #016094;
+}
+input:focus, textarea:focus, select:focus{
+    outline: 2px solid #016094;
+}
+input:invalid{
+    color: red;
+    outline-color: red;
+}
+.toggle-link{
+    color: #016094;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.quick-links ul li{
+    cursor: pointer;
+    color: rgba(185, 185, 185, 0.527);
+    font-weight: 500;
+}
+.quick-links ul li:hover{
+    color: white;
+}
+.toast-bar{
+    top: 10%;
+    right: 20px;
+    z-index: 50;
+    border: none;
+    min-width: 150px;
+    transition: all ease-in-out 400ms;
+}
+.toast-bar button{
+    border: none;
+    color: white;
+}
+.logout{
+    background-color: transparent;
+    color: #016094;
+    border: 1px solid #016094;
+}
+.tickets{
+    background-color: rgba(249, 250, 251, 1);
+    min-height: 50vh;
+}
+.close{
+    background-color: transparent;
+}
+.stat-icon{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.no-tickets{
+    color: #9c9ea0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+}
+.no-ticket-container{
+    height: 100%
+}
+.ticket-btn{
+    background-color: transparent;
+    border: none;
+}
+.modal-box{
+    position: relative;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 100%;
+}
+.modal-box-container{
+    background-color: #5858586b;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}

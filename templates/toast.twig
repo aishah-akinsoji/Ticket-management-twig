@@ -1,0 +1,33 @@
+{% if toast %}
+  <div id="toast" class="toast-bar {{toast.display == true ? 'd-flex' : 'd-none'}} shadow-lg px-2 py-2 rounded-3 align-items-center justify-content-between border-0 gap show position-fixed" style="background-color: {{toast.type == "success" ? "green" : "red"}}" >
+    <div class="text-white">
+      {{toast.message}}
+    </div>
+    <div>
+      <button class="close" id="closeBtn"><i class="fa-solid fa-x"></i></button>
+    </div>
+  </div>
+{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const closeBtn = document.getElementById("closeBtn");
+  const toast = document.getElementById("toast");
+
+  if (closeBtn && toast) {
+    closeBtn.addEventListener("click", () => {
+      toast.style.opacity = "0";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 300);
+    });
+
+    setTimeout(() => {
+      toast.style.opacity = "0";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 300);
+    }, 5000);
+  }
+});
+
+</script>

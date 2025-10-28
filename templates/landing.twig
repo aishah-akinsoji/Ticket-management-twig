@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="public/style.css">
+        <script src="https://kit.fontawesome.com/ad69c05094.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>{% block title %}Ticket Management system built with twig {% endblock %}</title>
+    </head>
+    <body>
+        {% include 'nav.twig' %}
+        {% set features = [
+            {
+                icon: '<i class="fa-solid fa-clipboard-list"></i>',
+                title: "Seamless Ticket Tracking",
+                description: "Create, view, and manage all your support tickets in one organized dashboard."
+            },
+            {
+                icon: '<i class="fa-solid fa-arrows-rotate"></i>',
+                title: "Real-Time Updates",
+                description: "Stay informed with instant feedback and live status changes."
+            },
+            {
+                icon: '<i class="fa-solid fa-bell"></i>',
+                title: "Smart Notifications",
+                description: "Get clear alerts for ticket actions, from errors to successful updates."
+            },
+            {
+                icon: '<i class="fa-solid fa-lock"></i>',
+                title: "Secure Authentication",
+                description: "Your data is safe. Sessions are stored securely using our simulated token system."
+            }
+        ] %}
+        {% set stats = [
+        {
+            value: "5K+",
+            title: "Active Users",
+        },
+        {
+            value: "20K+",
+            title: "Tickets managed",
+        },
+        {
+            value: "99.9%",
+            title: "Uptime",
+        }
+    ] %}
+        {% block content %}
+            <div class="landing-page">
+                <section class="hero position-relative">
+                    <div class="circle-lg position-absolute"></div>
+                    <div class="circle-xs position-absolute"></div>
+                    <div class="circle-md position-absolute"></div>
+                    <div class="circle-sm position-absolute"></div>
+                    <img src="templates/assets/wave.svg" class="position-absolute bottom-0"/>
+                    <div class="container">
+                        <div class="description position-absolute text-white d-flex gap-3 justify-content-center align-items-center flex-column text-center">
+                            <h1>Simplify Your Ticket Management </h1>
+                            <p class="px-3 py-0 ">Track, organize, and resolve tickets faster than ever. FixMate helps you stay on top of every issue with a smooth and responsive workflow.</p>
+                            <div class="buttons d-flex align-items-center justify-content-center gap-3">
+                                <button class="btn" onclick="window.location.href='index.php?page=auth&mode=signup'">Get Started</button>
+                                <button class="transparent-btn" onclick="window.location.href='index.php?page=auth&mode=login'">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="features py-5">
+                    <div class="container">
+                        <div class="d-flex text-center justify-content-center flex-column gap-5">
+                            <h2 class="pt-5">Why Choose fixMate?</h2>
+                            <div class="row w-100 justify-content-center gap-3">
+                                {% for feature in features %}
+                                    <div class="col-sm-12 col-md-3 d-flex justify-content-center p-4 align-items-start border-0 gap-2 card shadow-lg rounded-4 card-hover">
+                                        <div class="icon">
+                                            {{feature.icon|raw}}
+                                        </div>
+                                        <h4 class="fs-5">
+                                            {{feature.title}}
+                                        </h4>
+                                        <p class="p-0 m-0 text-start">
+                                            {{feature.description}}
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="stats bg-white py-4">
+                    <div class="container">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between">
+                            {% for stat in stats %}
+                                <div class="">
+                                    <span class="stat-value display-2">{{stat.value}}</span>
+                                    <p>{{stat.title}}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                <section class="call-to-action">
+                    <div class="container">
+                        <div class="d-flex flex-column text-center align-items-center justify-content-center text-white gap-2 py-5">
+                            <p class="m-0">Ready to Take Control of Your Workflow?</p>
+                            <span>Sign up now and start managing tickets effortlessly with FixMate.</span>
+                            <button class="btn mt-4" onclick="window.location.href='index.php?page=auth&mode=signup'"> Get Started for Free</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        {% endblock %}
+        {% include 'footer.twig' %}
+        <script src="public/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

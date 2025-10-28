@@ -1,0 +1,37 @@
+{
+    "users": [
+        {
+            "uname": "Aishah Akinsoji",
+            "email": "akinsojiaishah1@gmail.com",
+            "password": "$2y$10$vkL3eT9Hte99G2k9IJZ3OO.Lz\/RPFPe\/v4wdfojQQpGWWXRGZG9wO"
+        },
+        {
+            "uname": "aishakinsoji",
+            "email": "aishakinsoji@gmail.com",
+            "password": "$2y$10$3S4S2YWifmB.eVC8W5fAm.J5KuxMFFzXG8VJR26dj3EaFKdbQdUiS",
+            "tickets": [
+                {
+                    "id": "6fd4",
+                    "title": "hvGJFHCAGDAX",
+                    "description": "HGFYCDT",
+                    "status": "Open",
+                    "priority": "Medium"
+                },
+                {
+                    "id": "4e77",
+                    "title": "La yet",
+                    "description": "T hhddv",
+                    "status": "Resolved",
+                    "priority": "Medium"
+                },
+                {
+                    "id": "3814",
+                    "title": "knljhgcxd",
+                    "description": "i0pu9y8otitud",
+                    "status": "In Progress",
+                    "priority": "High"
+                }
+            ]
+        }
+    ]
+}
