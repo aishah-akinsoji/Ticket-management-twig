@@ -1,0 +1,31 @@
+# Use the official PHP image with Apache
+FROM php:8.2-apache
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Install necessary PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Enable Apache mod_rewrite (useful for routing)
+RUN a2enmod rewrite
+
+# Copy composer.json and install dependencies
+COPY composer.json composer.lock ./
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
+    && composer install --no-dev --optimize-autoloader \
+    && php -r "unlink('composer-setup.php');"
+
+# Copy project files
+COPY . .
+
+# Give Apache permission to write to storage/cache if Twig needs it
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache
+CMD ["apache2-foreground"]
