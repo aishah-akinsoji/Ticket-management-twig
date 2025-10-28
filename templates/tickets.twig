@@ -24,6 +24,7 @@
             <div class='d-flex gap-3'>
               <button class='coloured-btn' type="button" onclick="window.location.href='index.php?page=dashboard'">Go to Dashboard</button>
               <button class='logout rounded-3' type="button" onclick="window.location.href='index.php?logout=1'">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 Logout
               </button>
             </div>
@@ -91,20 +92,20 @@
             </div>
         </div>
         <div class="modal-box-body">
-            <form class="d-flex flex-column gap-3">
+            <form method="POST" action="index.php?page=tickets" class="d-flex flex-column gap-3">
                 <div class="title d-flex flex-column">
                 <label for="title" class="fw-bold" required>Title *</label>
-                <input id="title" type="text" placeholder="Title" required/>
+                <input id="title" name="title" type="text" placeholder="Title" required/>
                 <span style="color: red;">{{ errors.title }}</span>
                 </div>
                 <div class="description d-flex flex-column">
-                <label for="description" class="fw-bold">Description *</label>
-                <textarea id="description" placeholder="Description" required></textarea>
-                <span style="color: red;">{{ errors.description }}</span>
+                <label for="description" class="fw-bold">Description</label>
+                <textarea name="description" id="description" placeholder="Description" maxLength="2000"></textarea>
+                <span class="password-rule">max: 2000</span>
                 </div>
                 <div class="status d-flex flex-column">
                 <label class="fw-bold">Status *</label>
-                <select>
+                <select name="status">
                     <option value="Open">Open</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Resolved">Resolved</option>
@@ -112,19 +113,19 @@
                 </div>
                 <div class="priority d-flex flex-column">
                 <label class="fw-bold">Priority</label>
-                <select>
+                <select name="priority">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
                 </select>
                 </div>
+                <div class="modal-box-footer">
+                    <button id="closeModal" color="secondary">Close</button>
+                    <button class="coloured-btn">
+                        {{ editingTicket ? "Update Ticket" : "Create Ticket" }}
+                    </button>
+                </div>
             </form>
-        </div>
-        <div class="modal-box-footer">
-            <button id="closeModal" color="secondary">Close</button>
-            <button class="coloured-btn">
-                {{ editingTicket ? "Update Ticket" : "Create Ticket" }}
-            </button>
         </div>
       </div>
 

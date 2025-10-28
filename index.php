@@ -12,8 +12,8 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
     session_destroy();
 }
 
-require_once 'vendor/autoload.php';
-require_once 'src/functions.php';
+require_once 'vendor\autoload.php';
+require_once 'src\functions.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
@@ -123,6 +123,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'create_ticket') {
+    $title = trim($_POST['title']);
+    $description = trim($_POST['description']);
+    $status = $_POST['status'] ?? 'Open';
+    $priority = $_POST['priority'] ?? 'Low';
+
+    if ($title && $description && isset($_SESSION['user'])) {
+        $usersFile = __DIR__ . '/users.json';
+        $users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
+
+        foreach ($users as &$user) {
+            if ($user['email'] === $_SESSION['user']) {
+                $newTicket = [
+                    'id' => uniqid(),
+                    'title' => $title,
+                    'description' => $description,
+                    'status' => $status,
+                    'priority' => $priority,
+                    'created_at' => date('Y-m-d H:i:s')
+                ];
+                $user['tickets'][] = $newTicket;
+                break;
+            }
+        }
+
+        file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
+
+        $_SESSION['toast'] = [
+            'display' => true,
+            'message' => 'Ticket created successfully!',
+            'type' => 'success'
+        ];
+
+        header("Location: index.php?page=tickets");
+        exit;
+    } else {
+        $errors['ticket'] = "All fields are required.";
+    }
+}
 
 $toast = $_SESSION['toast'] ?? null;
 if (isset($_SESSION['toast'])) {
@@ -150,7 +189,6 @@ function getUserTickets($email) {
     }
     $users = json_decode(file_get_contents($usersFile), true) ?: [];
     foreach ($users as $user) {
-         echo "Checking user: " . ($user['email'] ?? 'N/A') . " against session: $email<br>";
         if (($user['email'] ?? null) === $email) {
             return $user['tickets'] ?? [];
         }
@@ -194,8 +232,6 @@ if (isset($_SESSION['user'])) {
 if (!in_array($page, $allowedPages)) {
     $page = 'landing';
 }
-
-echo '<pre>'; print_r($tickets); echo '</pre>';
 
 echo $twig->render("$page.twig", [
     'mode' => $mode,
