@@ -12,10 +12,10 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
     session_destroy();
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/src/functions.php';
+require_once __DIR__ . '/../src/functions.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/src/templates');
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/templates');
 $twig = new \Twig\Environment($loader, [
     'debug' => true,
 ]);

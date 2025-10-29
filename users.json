@@ -33,5 +33,11 @@
                 }
             ]
         }
-    ]
+    ],
+    "0": {
+        "uname": "Aishah Akinsoji",
+        "email": "gbemi4me@gmail.com",
+        "password": "$2y$10$eSLbb2mZOMapyoIUxx1b1.\/Z70kNmSAWGce1KS3o3DJfposiJMqoG",
+        "tickets": []
+    }
 }
