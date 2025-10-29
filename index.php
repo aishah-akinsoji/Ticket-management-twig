@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-    require_once 'src/functions.php';
+    require_once __DIR__ . '/src/functions.php';
     $toast = [
         'display' => true,
         'message' => 'Logged out successfully',
@@ -12,10 +12,10 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
     session_destroy();
 }
 
-require_once 'vendor\autoload.php';
-require_once 'src\functions.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/functions.php';
 
-$loader = new \Twig\Loader\FilesystemLoader('templates');
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/src/templates');
 $twig = new \Twig\Environment($loader, [
     'debug' => true,
 ]);
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'creat
     $priority = $_POST['priority'] ?? 'Low';
 
     if ($title && $description && isset($_SESSION['user'])) {
-        $usersFile = __DIR__ . '/users.json';
+        $usersFile = __DIR__ . '/../users.json';
         $users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
 
         foreach ($users as &$user) {
