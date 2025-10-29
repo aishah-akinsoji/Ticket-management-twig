@@ -16,3 +16,5 @@ RUN chown -R www-data:www-data /var/www/html \
 
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
+RUN a2enmod dir
+RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
